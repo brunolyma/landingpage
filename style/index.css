@@ -6,7 +6,7 @@
 }
 
 :root {
-  --hue: 370;
+  --hue: 170;
   --primary-color: hsl(var(--hue), 100%, 26%);
   --headline: hsl(210, 11%, 15%);
   --paragraph: hsl(210, 9%, 31%);
@@ -615,6 +615,8 @@ footer p {
   nav#navigation.scroll .menu a.button {
     color: white;
     border-color: white;
+
+    transition: background 0.3s;
   }
 
   nav#navigation.scroll .menu ul li a.active,
@@ -626,7 +628,7 @@ footer p {
     opacity: 1;
     transition: 0.2s;
   }
-  nav#navigation .menu ul li a:active,
+  nav#navigation .menu ul li a.active,
   nav#navigation .menu ul li a:hover {
     opacity: 1;
     font-weight: 700;
@@ -637,7 +639,7 @@ footer p {
   nav#navigation .menu li a::after {
     display: block;
     content: "";
-    bottom: -1.9rem;
+    bottom: -2rem;
     left: -5%;
 
     position: relative;
@@ -658,9 +660,12 @@ footer p {
     width: 110%;
   }
 
+  nav#navigation.scroll .menu a.button.active,
   nav#navigation.scroll .menu a.button:hover {
     background-color: var(--brand-back);
     color: var(--primary-color);
+
+    transition: 0.2s;
   }
 
   nav#navigation .menu a.button:hover {
@@ -752,9 +757,10 @@ footer p {
     line-height: 2.4rem;
     padding: 0;
   }
-  #about .col-a {
-    padding-block: auto;
+  #about .col-a h4 {
+    padding-top: 0;
   }
+
   #about img {
     width: fit-content;
   }
@@ -766,7 +772,6 @@ footer p {
     grid-template-areas: " A B";
     align-items: end;
     gap: 14rem;
-
   }
 
   /* ============ FOOTER ============== */
@@ -788,4 +793,6 @@ footer p {
   footer .col-a ul {
     padding-top: 2.4rem;
   }
+
+  /* ========== SCROLL UP ========== */
 }

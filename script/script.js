@@ -1,11 +1,39 @@
-window.addEventListener('scroll', onScroll)
+window.addEventListener("scroll", onScroll)
 
 function onScroll() {
   toFixNavbarOnScroll()
-  backToTopButton() 
+  backToTopButton()
+  activeNavCurrentSection(home)
+  activeNavCurrentSection(services)
+  activeNavCurrentSection(about)
+  activeNavCurrentSection(contact)
 }
 
-function toFixNavbarOnScroll () {
+function activeNavCurrentSection(section) {
+  const targetLine = scrollY + innerHeight / 2
+
+  const sectionTop = section.offsetTop
+  const sectionHeight = section.offsetHeight
+
+  const sectionTopReachOrPassedTargetLine = targetLine >= sectionTop
+
+  const sectionEndsAt = sectionTop + sectionHeight
+
+  const sectionEndPassedTargetLine = targetLine <= sectionEndsAt
+
+  const sectionBoundaries =
+    sectionTopReachOrPassedTargetLine && sectionEndPassedTargetLine
+
+  const sectionId = section.getAttribute("id")
+  const menuElement = document.querySelector(`.menu a[href*=${sectionId}]`)
+
+  menuElement.classList.remove("active")
+  if (sectionBoundaries) {
+    menuElement.classList.add("active")
+  }
+}
+
+function toFixNavbarOnScroll() {
   const nav = document.querySelector("nav")
   if (scrollY > 0) {
     nav.classList.add("scroll")
@@ -14,11 +42,11 @@ function toFixNavbarOnScroll () {
   }
 }
 
-function backToTopButton () {
-  if(scrollY > 1460) {
-    document.querySelector( '#backToTop' ).classList.add('show')
+function backToTopButton() {
+  if (scrollY > 1460) {
+    document.querySelector("#backToTop").classList.add("show")
   } else {
-    document.querySelector( '#backToTop' ).classList.remove('show')
+    document.querySelector("#backToTop").classList.remove("show")
   }
 }
 
